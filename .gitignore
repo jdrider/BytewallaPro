@@ -1,0 +1,6 @@
+
+/bin
+*.classpath
+/doc
+/.settings
+/gen
