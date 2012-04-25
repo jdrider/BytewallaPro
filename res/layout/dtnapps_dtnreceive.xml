@@ -25,7 +25,7 @@ android:orientation="vertical" android:layout_width="fill_parent" android:layout
 	
 
 
-<LinearLayout 
+<RelativeLayout 
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 <Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
@@ -36,9 +36,10 @@ android:text="Receive"   />
 android:id="@+id/DTNApps_DTNReceive_CloseButton"
 android:text="Close"   
 android:layout_marginLeft="10dp"
+android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
 
   />  
-</LinearLayout>  
+</RelativeLayout>  
   
 <TextView android:text="Result:" android:id="@+id/DTNApps_DTNReceive_ResultCaptionTextView" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 <TextView android:text="N/A" android:id="@+id/DTNApps_DTNReceive_ResultTextView" android:layout_width="fill_parent" android:layout_height="wrap_content"></TextView>
