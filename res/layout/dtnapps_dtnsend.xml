@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-  <TextView android:layout_column="1" 
-	android:id="@+id/DTNApps_DTNSend_DestEIDCaptionTextView"
-	android:layout_width="wrap_content" android:textSize="15sp" 
-	android:layout_height="wrap_content"
-	android:layout_marginTop="8dp"
-	android:text="Destination Endpoint ID:"></TextView>
-		
-   <EditText 
-    android:layout_column="1" 
-   android:text="dtn://village.bytewalla.com/test" android:id="@+id/DTNApps_DTNSend_DestEIDEditText" 
-   android:layout_width="fill_parent" android:layout_height="wrap_content"
-  ></EditText>
+    <TextView
+        android:id="@+id/DTNApps_DTNSend_DestEIDCaptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Destination Endpoint ID:"
+        android:textSize="15sp" >
+    </TextView>
 
+    <EditText
+        android:id="@+id/DTNApps_DTNSend_DestEIDEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="dtn://village.bytewalla.com/test" >
+    </EditText>
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-<LinearLayout 
-xmlns:android="http://schemas.android.com/apk/res/android" 
-android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
-android:id="@+id/DTNApps_DTNSend_SendButton"
- 
-android:text="Send"   
-  />
-  
-  
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
-android:id="@+id/DTNApps_DTNSend_CloseButton"
-android:text="Close"   
-android:layout_marginLeft="10dp"
+        <Button
+            android:id="@+id/DTNApps_DTNSend_SendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send" />
 
-  />  
-  
-</LinearLayout>
+        <Button
+            android:id="@+id/DTNApps_DTNSend_CloseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Close" />
+    </LinearLayout>
 
- <TextView android:layout_column="1" 
-	android:id="@+id/DTNApps_DTNSend_MessageCaptionTextView"
-	android:layout_width="wrap_content" android:textSize="15sp" 
-	android:layout_height="wrap_content"
-	android:layout_marginTop="8dp"
-	android:text="Message:"></TextView>
-  <EditText 
-    android:layout_column="2"  android:lines="6"  
-   android:text="" android:id="@+id/DTNApps_DTNSend_MessageTextView" 
-   android:layout_width="fill_parent" android:layout_height="fill_parent"></EditText>
-	
-	
+    <TextView
+        android:id="@+id/DTNApps_DTNSend_MessageCaptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Message:"
+        android:textSize="15sp" >
+    </TextView>
 
-  
-		
+    <EditText
+        android:id="@+id/DTNApps_DTNSend_MessageTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:lines="6"
+        android:inputType="textLongMessage">
+    </EditText>
+
 </LinearLayout>

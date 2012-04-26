@@ -1,54 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-<LinearLayout 
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
+        <TextView
+            android:id="@+id/DTNApps_DTNReceive_DestEIDTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Destination Endpoint ID:"
+            android:textSize="15sp" />
 
-    <TextView
-		android:id="@+id/DTNApps_DTNReceive_DestEIDTextView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		 android:textSize="15sp" 	android:layout_marginTop="8dp"
-		android:text="Destination Endpoint ID:"
-		
-	/>
-   <EditText 
-    
-   android:text="dtn://tattoo.bytewalla.com/test" android:id="@+id/DTNApps_DTNReceive_DestEIDEditText" 
-   android:layout_width="fill_parent" android:layout_marginBottom="8dp"
-    android:layout_height="wrap_content"></EditText>
-	
-	
+        <EditText
+            android:id="@+id/DTNApps_DTNReceive_DestEIDEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
+            android:text="dtn://tattoo.bytewalla.com/test" >
+        </EditText>
 
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-<RelativeLayout 
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
-android:id="@+id/DTNApps_DTNReceive_ReceiveButton"
-android:text="Receive"   />
+            <Button
+                android:id="@+id/DTNApps_DTNReceive_ReceiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Receive" />
 
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
-android:id="@+id/DTNApps_DTNReceive_CloseButton"
-android:text="Close"   
-android:layout_marginLeft="10dp"
-android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
+            <Button
+                android:id="@+id/DTNApps_DTNReceive_CloseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
+                android:layout_marginLeft="10dp"
+                android:text="Close" />
+        </RelativeLayout>
 
-  />  
-</RelativeLayout>  
-  
-<TextView android:text="Result:" android:id="@+id/DTNApps_DTNReceive_ResultCaptionTextView" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-<TextView android:text="N/A" android:id="@+id/DTNApps_DTNReceive_ResultTextView" android:layout_width="fill_parent" android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:id="@+id/DTNApps_DTNReceive_ResultCaptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Result:" >
+        </TextView>
 
-  
-  
-</LinearLayout>
-
+        <TextView
+            android:id="@+id/DTNApps_DTNReceive_ResultTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="N/A" >
+        </TextView>
+    </LinearLayout>
 
 </ScrollView>
-
-
