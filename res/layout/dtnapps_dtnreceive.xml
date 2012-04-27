@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Destination Endpoint ID:"
+            android:text="@string/destEndpointID"
             android:textSize="15sp" />
 
         <EditText
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:inputType="text"
-            android:text="dtn://tattoo.bytewalla.com/test" >
+            android:text="@string/defaultDestID_Rec" >
         </EditText>
 
         <RelativeLayout
@@ -36,7 +36,7 @@
                 android:id="@+id/DTNApps_DTNReceive_ReceiveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Receive" />
+                android:text="@string/receive" />
 
             <Button
                 android:id="@+id/DTNApps_DTNReceive_CloseButton"
@@ -44,21 +44,21 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
                 android:layout_marginLeft="10dp"
-                android:text="Close" />
+                android:text="@string/close" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/DTNApps_DTNReceive_ResultCaptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Result:" >
+            android:text="@string/result" >
         </TextView>
 
         <TextView
             android:id="@+id/DTNApps_DTNReceive_ResultTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="N/A" >
+            android:text="@string/na" >
         </TextView>
     </LinearLayout>
 

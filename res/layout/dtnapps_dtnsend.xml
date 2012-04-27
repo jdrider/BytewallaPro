@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Destination Endpoint ID:"
+        android:text="@string/destEndpointID"
         android:textSize="15sp" >
     </TextView>
 
@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="dtn://village.bytewalla.com/test" >
+        android:text="@string/defaultDestID_Send" >
     </EditText>
 
     <LinearLayout
@@ -31,14 +31,14 @@
             android:id="@+id/DTNApps_DTNSend_SendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send" />
+            android:text="@string/send" />
 
         <Button
             android:id="@+id/DTNApps_DTNSend_CloseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Close" />
+            android:text="@string/close" />
     </LinearLayout>
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Message:"
+        android:text="@string/msgCaption"
         android:textSize="15sp" >
     </TextView>
 

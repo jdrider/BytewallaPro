@@ -18,8 +18,8 @@
                 android:layout_height="40dip"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/dtnsend"
-                android:contentDescription="Send a message" />
+                android:contentDescription="@string/dtnSend" 
+                android:src="@drawable/dtnsend" />
 
             <TextView
                 android:id="@+id/DTNApps_DTNSendTextView"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_marginLeft="15dp"
-                android:text="DTN Send"
+                android:text="@string/dtnSend"
                 android:textSize="20sp" />
 
             <Button
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
-                android:text="Open" >
+                android:text="@string/open" >
             </Button>
         </TableRow>
 
@@ -48,7 +48,7 @@
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/dtnreceive" 
-                android:contentDescription="Receive a message"/>
+                android:contentDescription="@string/dtnReceive"/>
 
             <TextView
                 android:id="@+id/DTNApps_DTNReciveTextView"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_marginLeft="15dp"
-                android:text="DTN Receive"
+                android:text="@string/dtnReceive"
                 android:textSize="20sp" />
 
             <Button
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
-                android:text="Open" >
+                android:text="@string/open" >
             </Button>
         </TableRow>
     </TableLayout>
@@ -75,6 +75,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="Close" />
+        android:text="@string/close" />
 
 </LinearLayout>

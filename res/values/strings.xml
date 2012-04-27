@@ -28,5 +28,54 @@
    
    <!-- The folder name for the test data logging. The test data folder will be in the root folder of SDCard -->
    <string name="DTNTestDataPrefix">dtn_test_data</string>
-
+   
+   <!-- The following were added by riderj -->
+   <string name="dtnSend">DTN Send</string>
+   <string name="dtnReceive">DTN Receive</string>
+   <string name="close">Close</string>
+   <string name="open">Open</string>
+   <string name="announces">Announces:</string>
+   <string name="apps">Apps</string>
+   <string name="batteryRaw">Battery Raw / Scale: 100/100</string>
+   <string name="config">Config</string>
+   <string name="destLink">Dest / Link_Id : dtn://host1.dtn/* / village_tcp_link</string>
+   <string name="destEndpointID">Destination Endpoint ID:</string>
+   <string name="discoveries">Discoveries:</string>
+   <string name="discSectionCaption">Discovery Section:</string>
+   <string name="dtnConfig">DTN Configuration:</string>
+   <string name="dtnServiceStopped">DTN Service : Stopped</string>
+   <string name="defaultDestID_Rec">dtn://tattoo.bytewalla.com/test</string>
+   <string name="defaultDestID_Send">dtn://village.bytewalla.com/test</string>
+   <string name="endpointLabel">EndpointID Goes Here</string>
+   <string name="hello">Hello</string>
+   <string name="discoveryAddr">Id / Addr_Family  : discovery1 / ip</string>
+   <string name="linksList">Id / Conv / Dest / Type : village_tcp_link / tcp / 10.0.2.2:9000 / ONDEMAND</string>
+   <string name="interfaceList">Id / Conv / Port : tcp0 / tcp / 4556</string>
+   <string name="interfaceSection">Interface Section:</string>
+   <string name="announcesList">Interface_Id / Disovery_Id / Conv / Interval  : tcp0 / discovery1 / tcp / 5</string>
+   <string name="linkCaption">Link Section:</string>
+   <string name="routeLocalEID">Local EID: static</string>
+   <string name="msgCaption">Message:</string>
+   <string name="na">N/A</string>
+   <string name="noActiveInterfaceLinks">No. Active Interfaces / Links : 1 / 2</string>
+   <string name="noBundlesReg">No. Bundles / Registrations : 150 / 10</string>
+   <string name="noBundlesUpDown">No. Bundles Uploading / Downloading : 0 / 0</string>
+   <string name="ping">Ping</string>
+   <string name="quit">Quit</string>
+   <string name="receive">Receive</string>
+   <string name="resetStorage">Reset Storage</string>
+   <string name="restart">Restart</string>
+   <string name="resultHere">Result Goes Here</string>
+   <string name="result">Result:</string>
+   <string name="routeSection">Route Section:</string>
+   <string name="routerType">Router Type: static</string>
+   <string name="save">Save</string>
+   <string name="send">Send</string>
+   <string name="start">Start</string>
+   <string name="status">Status:</string>
+   <string name="storageConsumption">Storage Consumption : 10 MB</string>
+   <string name="storagePath">Storage Path : dtn</string>
+   <string name="storageType">Storage Type / Quota : SDCard / 50 MB</string>
+   <string name="about">Tool for monitoring and configuring DTN Service</string>
+   
 </resources>

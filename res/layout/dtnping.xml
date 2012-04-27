@@ -12,14 +12,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="EndpointID Goes Here" >
+                android:text="@string/endpointLabel" >
             </EditText>
 
             <Button
                 android:id="@+id/DTNPingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ping" >
+                android:text="@string/ping" >
             </Button>
         </TableRow>
 
@@ -29,7 +29,7 @@
                 android:id="@+id/ResultTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Result goes here" >
+                android:text="@string/resultHere" >
             </TextView>
         </TableRow>
     </TableLayout>

@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dip"
                 android:drawableLeft="@drawable/big_launcher"
-                android:text="Tool for monitoring and configuring DTN Service" >
+                android:text="@string/about" >
             </TextView>
         </LinearLayout>
 
@@ -35,7 +35,7 @@
             android:layout_marginBottom="5dip"
             android:layout_marginTop="10dip"
             android:singleLine="true"
-            android:text="DTN Service : Stopped" >
+            android:text="@string/dtnServiceStopped" >
         </TextView>
 
         <LinearLayout
@@ -50,7 +50,7 @@
                 android:id="@+id/DTNManager_StartStopButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start" >
+                android:text="@string/start" >
             </Button>
 
             <Button
@@ -58,14 +58,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="Restart" >
+                android:text="@string/restart" >
             </Button>
 
             <Button
                 android:id="@+id/DTNManager_EditConfigButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Config" >
+                android:text="@string/config" >
             </Button>
 
             <Button
@@ -73,14 +73,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="Apps" >
+                android:text="@string/apps" >
             </Button>
 
             <Button
                 android:id="@+id/DTNManager_QuitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quit" >
+                android:text="@string/quit" >
             </Button>
         </LinearLayout>
 
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="ResetStorage" >
+                android:text="@string/resetStorage" >
             </Button>
 
             <TextView
@@ -104,7 +104,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="15dip"
-                android:text="Battery Raw / Scale : 100 / 100" >
+                android:text="@string/batteryRaw" >
             </TextView>
         </LinearLayout>
 
@@ -114,7 +114,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginTop="10dip"
-            android:text="Status:" >
+            android:text="@string/status" >
         </TextView>
 
         <TextView
@@ -123,7 +123,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Storage Consumption : 10 MB" >
+            android:text="@string/storageConsumption" >
         </TextView>
 
         <TextView
@@ -132,7 +132,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="No. Bundles / Registrations : 150 / 10" >
+            android:text="@string/noBundlesReg" >
         </TextView>
 
         <TextView
@@ -141,7 +141,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="No. Bundles Uploading / Downloading : 0 / 0" >
+            android:text="@string/noBundlesUpDown" >
         </TextView>
 
         <TextView
@@ -149,7 +149,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="15dip"
-            android:text="No. Active Interfaces / Links  : 1 / 2"
+            android:text="@string/noActiveInterfaceLinks"
             android:visibility="gone" >
         </TextView>
 
@@ -159,7 +159,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip"
-            android:text="DTN Configuration:" >
+            android:text="@string/dtnConfig" >
         </TextView>
 
         <TextView
@@ -168,7 +168,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Storage Type / Quota : SDCard / 50 MB " >
+            android:text="@string/storageType" >
         </TextView>
 
         <TextView
@@ -177,7 +177,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Storage Path : dtn " />
+            android:text="@string/storagePath" />
 
         <TextView
             android:id="@+id/DTNManager_InterfacesCaptionTextView"
@@ -185,7 +185,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Interface Section:" />
+            android:text="@string/interfaceSection" />
 
         <TextView
             android:id="@+id/DTNManager_InterfacesListTextView"
@@ -193,7 +193,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Id / Conv / Port : tcp0 / tcp / 4556 " />
+            android:text="@string/interfaceList" />
 
         <TextView
             android:id="@+id/DTNManager_LinksCaptionTextView"
@@ -201,7 +201,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Link Section:" />
+            android:text="@string/linkCaption" />
 
         <TextView
             android:id="@+id/DTNManager_LinksListTextView"
@@ -209,7 +209,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Id / Conv / Dest / Type : village_tcp_link / tcp / 10.0.2.2:9000 / ONDEMAND " />
+            android:text="@string/linksList" />
 
         <TextView
             android:id="@+id/DTNManager_RoutesCaptionTextView"
@@ -217,7 +217,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Route Section:" />
+            android:text="@string/routeSection" />
 
         <TextView
             android:id="@+id/DTNManager_RouteLocalEIDTextView"
@@ -225,7 +225,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Local EID: static" />
+            android:text="@string/routeLocalEID" />
 
         <TextView
             android:id="@+id/DTNManager_RouterTypeTextView"
@@ -233,7 +233,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Router Type: static" />
+            android:text="@string/routerType" />
 
         <TextView
             android:id="@+id/DTNManager_RoutesListTextView"
@@ -241,7 +241,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Dest / Link_Id  : dtn://host1.dtn/* / village_tcp_link " />
+            android:text="@string/destLink" />
 
         <TextView
             android:id="@+id/DTNManager_DiscoverySectionCaptionTextView"
@@ -249,7 +249,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="Discovery Section:" />
+            android:text="@string/discSectionCaption" />
 
         <TextView
             android:id="@+id/DTNManager_DiscoveriesCaptionTextView"
@@ -257,7 +257,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Discoveries:" />
+            android:text="@string/discoveries" />
 
         <TextView
             android:id="@+id/DTNManager_DiscoveriesListTextView"
@@ -265,7 +265,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="35dip"
-            android:text="Id / Addr_Family  : discovery1 / ip " />
+            android:text="@string/discoveryAddr" />
 
         <TextView
             android:id="@+id/DTNManager_AnnouncesCaptionTextView"
@@ -273,7 +273,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="Announces:" />
+            android:text="@string/discoveries" />
 
         <TextView
             android:id="@+id/DTNManager_AnnouncesListTextView"
@@ -281,7 +281,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="35dip"
-            android:text="Interface_Id / Disovery_Id / Conv / Interval  : tcp0 / discovery1 / tcp / 5" />
+            android:text="@string/announcesList" />
     </LinearLayout>
 
 </ScrollView>
