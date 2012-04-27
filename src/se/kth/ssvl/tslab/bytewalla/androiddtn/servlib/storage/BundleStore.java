@@ -486,9 +486,11 @@ public class BundleStore  {
 		int id;
 		Bundle b;
 		global_storage_ = GlobalStorage.getInstance();
-		int count = 0;
+		
+		//int count = 0; FIXME commented this out because it wasn't being used
+		
 		while(iterator.hasNext()){
-			count++;
+			//count++;
 			id = iterator.next();
 			b = get(id);
 			Log.d(TAG, "Validating Bundles: "+id);

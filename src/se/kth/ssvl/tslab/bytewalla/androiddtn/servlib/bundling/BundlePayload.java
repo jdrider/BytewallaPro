@@ -417,11 +417,13 @@ public class BundlePayload implements Serializable {
 			// Transfer bytes from in to out
 			byte[] buf = new byte[1024];
 			int len;
-			int offset = 0;
+			
+			//int offset = 0; FIXME commented this out because it wasn't being used
+			
 			while ((len = in.read(buf)) > 0) {
 
 				file_handle_.write(buf, 0, len);
-				offset += len;
+				//offset += len;
 			}
 			
 			unpin_file_handle(file_handle_);
