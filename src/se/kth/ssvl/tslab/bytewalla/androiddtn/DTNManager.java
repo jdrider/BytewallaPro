@@ -299,16 +299,21 @@ public class DTNManager extends Activity  {
 	{
 		Intent intent = new Intent(this, DTNManager.class);
 		
+		Notification.Builder notifBuilder = new Notification.Builder(getApplicationContext());
 		
+		PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, intent,PendingIntent.FLAG_CANCEL_CURRENT);
 		
-		Notification notification = new Notification(R.drawable.icon,
-				text, System.currentTimeMillis());
-        	notification.setLatestEventInfo(DTNManager.this,
-        			text, description,
-	                PendingIntent.getActivity(getBaseContext(), 0, intent,
-        	                PendingIntent.FLAG_CANCEL_CURRENT));
-	        notification_manager_.notify(NOTIFICATION_APPLICATION_ID++, notification);
+		notifBuilder.setContentIntent(pendingIntent);
 		
+		notifBuilder.setSmallIcon(R.drawable.icon);
+		
+		notifBuilder.setContentTitle(text);
+		
+		notifBuilder.setContentText(description);
+
+		Notification notification = notifBuilder.getNotification();		
+		
+		notification_manager_.notify(NOTIFICATION_APPLICATION_ID++, notification);
 		
 	}
 	

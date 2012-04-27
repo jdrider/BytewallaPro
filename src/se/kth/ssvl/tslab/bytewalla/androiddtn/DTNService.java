@@ -129,15 +129,22 @@ public class DTNService extends android.app.Service {
 		
 	};
 	
-	/**
-	 * onStart overridden from Android Service. The DTN Service is started here
-	 */
+//	/**
+//	 * onStart overridden from Android Service. The DTN Service is started here
+//	 */
+//	@Override
+//	public void onStart(Intent intent, int startId) {
+//		super.onStart(intent, startId);
+//		start();
+//		Log.d(TAG, "DTNServer: BunldeDaemon is started ");
+//		
+//	}
+	
 	@Override
-	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
+	public int onStartCommand(Intent intent, int flags, int startId){
 		start();
-		Log.d(TAG, "DTNServer: BunldeDaemon is started ");
-		
+		Log.d(TAG, "DTNServer: BundleDaemon is started ");
+		return START_STICKY;
 	}
 	
 	/**
