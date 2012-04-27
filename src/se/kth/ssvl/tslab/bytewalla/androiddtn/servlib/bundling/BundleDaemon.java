@@ -1288,10 +1288,12 @@ public class BundleDaemon extends BundleEventHandler implements Runnable {
 
 			Log.d(TAG, " handle_bundle_cancel");
 			
-			if (bundle == null)
-			{
-				Log.e(TAG, "bundle is null in handle cancel bundle");
-			}
+			//FIXME Following block was commented out because it is dead code.
+//			if (bundle == null)
+//			{
+//				Log.e(TAG, "bundle is null in handle cancel bundle");
+//			}
+			
 			actions_.cancel_bundle(bundle, link);
 		}
 

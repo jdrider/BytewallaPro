@@ -20,8 +20,6 @@
 package se.kth.ssvl.tslab.bytewalla.androiddtn.applib.types;
 
 import java.util.Calendar;
-import java.util.Date;
-
 import se.kth.ssvl.tslab.bytewalla.androiddtn.systemlib.util.TimeHelper;
 
 /**
@@ -42,9 +40,9 @@ public class DTNTime  {
 	  public static long TIMEVAL_CONVERSION;
 	 
 	    static {
-	    	Calendar ref_calendar         = Calendar.getInstance();
+	    	Calendar ref_calendar = Calendar.getInstance();
 	    	// set year to 2000 , start date is 1900
-	    	ref_calendar.setTime(new Date(100,0,1));
+	    	ref_calendar.set(100,0,1);
 	    	
 	    	TIMEVAL_CONVERSION = ref_calendar.getTimeInMillis() / 1000;
 	    }

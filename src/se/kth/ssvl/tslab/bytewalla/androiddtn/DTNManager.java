@@ -299,6 +299,8 @@ public class DTNManager extends Activity  {
 	{
 		Intent intent = new Intent(this, DTNManager.class);
 		
+		
+		
 		Notification notification = new Notification(R.drawable.icon,
 				text, System.currentTimeMillis());
         	notification.setLatestEventInfo(DTNManager.this,

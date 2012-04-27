@@ -50,8 +50,8 @@ public class DTNTime implements Serializable{
 	 
 	 
 	    static {
-	    	Calendar ref_calendar         = Calendar.getInstance();
-	    	ref_calendar.setTime(new Date(100,0,1));
+	    	Calendar ref_calendar = Calendar.getInstance();
+	    	ref_calendar.set(100,0,1);
 	    	
 	    	TIMEVAL_CONVERSION = ref_calendar.getTimeInMillis() / 1000;
 	    }

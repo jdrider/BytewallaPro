@@ -29,6 +29,7 @@ import se.kth.ssvl.tslab.bytewalla.androiddtn.systemlib.thread.Lock;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.util.Log;
 
@@ -413,20 +414,26 @@ public class ForwardingLog extends ArrayList<ForwardingInfo> implements Serializ
 
     	ForwardingInfo info;
     	
+    	Calendar cal = Calendar.getInstance();
+    	
+    	
     	lock_.lock();
 
     	try{
     	    for (int i = 0; i<log_.size(); i++)
     	    {
     	    	info = log_.get(i);
+    	    	
+    	    	cal.setTime(info.timestamp());
+    	    	
     	    	String format = String.format("\t%s -> %s [%s] %s at %s.%s "
                      +"[custody min %s pct %s max %s]\n",
                      ForwardingInfo.state_to_str(info.state()),
                      info.link_name(),
                      info.remote_eid(),
                      ForwardingInfo.action_to_str(info.action()),
-                     info.timestamp().getSeconds(),
-                     info.timestamp().getSeconds(),
+                     cal.get(Calendar.SECOND),
+                     cal.get(Calendar.SECOND),
                      info.custody_spec().min(),
                      info.custody_spec().lifetime_pct(),
                      info.custody_spec().max());

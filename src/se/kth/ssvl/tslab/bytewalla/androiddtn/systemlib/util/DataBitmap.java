@@ -19,13 +19,14 @@
  */
 package se.kth.ssvl.tslab.bytewalla.androiddtn.systemlib.util;
 
+import java.io.Serializable;
 import java.util.BitSet;
 
 /**
  *  DataBitmap implementation by embedding Java BitSet inside
  *  @author Rerngvit Yanggratoke (rerngvit@kth.se) 
  */
-public class DataBitmap  {
+public class DataBitmap implements Serializable  {
 	/**
 	 * Internal java Bitset
 	 */
