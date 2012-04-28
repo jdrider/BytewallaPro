@@ -1604,7 +1604,7 @@ public abstract class Connection extends CLConnection {
 
 		Log.d(TAG, "got SHUTDOWN byte");
 		int shutdown_len = 1;
-		int handled_len = 0;
+		//int handled_len = 0;  XXX Commented this variable out since its value wasn't being used.
 		boolean has_reason = false;
 		boolean has_delay = false;
 		if ((flags & (byte) shutdown_flags_t.SHUTDOWN_HAS_REASON.getCode()) > 0) {
@@ -1650,13 +1650,13 @@ public abstract class Connection extends CLConnection {
 
 		// now handle the message, first skipping the typecode byte
 		recvbuf_.position(1);
-		handled_len += 1;
+		//handled_len += 1;
 		shutdown_reason_t reason = shutdown_reason_t.SHUTDOWN_NO_REASON;
 		if (has_reason)
 
 		{
 			byte type_reason = recvbuf_.get();
-			handled_len += 1;
+			//handled_len += 1;
 
 			switch (shutdown_reason_t.get(type_reason)) {
 			case SHUTDOWN_NO_REASON:
@@ -1684,7 +1684,7 @@ public abstract class Connection extends CLConnection {
 				return false;
 
 			SDNV.decode(recvbuf_, delay);
-			handled_len += sdnv_len;
+			//handled_len += sdnv_len;
 		}
 
 		String text = String.format(

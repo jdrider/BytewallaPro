@@ -136,11 +136,13 @@ public class RegistrationTable{
             // now, all we should get are API registrations
             Registration api_reg = (Registration)reg;
             
-            if (api_reg == null) {
-                Log.e(TAG, String.format("non-api registration %s passed to registration store",
-                        reg.regid()));
-                return false;
-            }
+//            //XXX Refactored this into a catch block to get rid of dead code warning.
+//			if (api_reg == null) {
+//				Log.e(TAG, String.format(
+//						"non-api registration %s passed to registration store",
+//						reg.regid()));
+//				return false;
+//			}
             
             Log.d(TAG, String.format("adding registration %s/%s", reg.regid(),
                     reg.endpoint().str()));
@@ -153,7 +155,12 @@ public class RegistrationTable{
            
            return true;
            
-    	}finally{
+    	}
+    	catch(NullPointerException e){
+    		Log.e(TAG, String.format("non-api registration %s passed to registration store", reg.regid()));
+            return false;
+    	}
+    	finally{
     		lock_.unlock();
     	}
     }
@@ -205,11 +212,12 @@ public class RegistrationTable{
     		reg = find(regid);
     		reg.free_payload();
     		
-            if(reg==null) {
-                Log.e(TAG, String.format("error removing registration %s: no matching registration",
-                        regid));
-                return false;
-            }
+//    		//XXX Refactored this into the catch block to remove dead code warning
+//            if(reg==null) {
+//                Log.e(TAG, String.format("error removing registration %s: no matching registration",
+//                        regid));
+//                return false;
+//            }
             
             if(regid>Registration.MAX_RESERVED_REGID){
 	            if (! RegistrationStore.getInstance().del(reg)) {
@@ -221,7 +229,12 @@ public class RegistrationTable{
             reglist_.remove(reg);
             return true;    	            
 
-    	}finally{
+    	}
+    	catch(NullPointerException e){
+			Log.e(TAG, String.format("error removing registration %s: no matching registration",regid));
+			return false;
+    	}
+    	finally{
     		lock_.unlock();
     	}
     }
@@ -241,11 +254,12 @@ public class RegistrationTable{
 
     	    Registration api_reg = reg; 
     	    
-    	    if (api_reg == null) {
-    	        Log.d(TAG, String.format("non-api registration %s passed to registration store",
-    	                reg.regid()));
-    	        return false;
-    	    }
+//    	  //XXX Refactored this into the catch block to remove dead code warning
+//    	    if (api_reg == null) {
+//    	        Log.d(TAG, String.format("non-api registration %s passed to registration store",
+//    	                reg.regid()));
+//    	        return false;
+//    	    }
     	    
     	    if (! RegistrationStore.getInstance().update(api_reg)) {
     	        Log.e(TAG, String.format("error updating registration %s/%s: error in persistent store",
@@ -254,7 +268,12 @@ public class RegistrationTable{
     	    }
 
     	    return true;
-    	}finally{
+    	}
+    	catch(NullPointerException e){
+    		 Log.d(TAG, String.format("non-api registration %s passed to registration store", reg.regid()));
+ 	        return false;
+    	}
+    	finally{
     		lock_.unlock();
     	}
     }

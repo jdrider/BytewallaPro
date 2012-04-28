@@ -137,7 +137,7 @@ public class SQLiteImplementation {
 	    	
             int fieldColumn = cursor.getColumnIndex(field); 
 
-	    	if(cursor!=null){
+	    	if(cursor.getCount() > 0){
 	    		if (cursor.moveToFirst()){
 	    			int result =  cursor.getInt(fieldColumn);
 	    			cursor.close();
@@ -147,6 +147,7 @@ public class SQLiteImplementation {
 	    	else{
 	    		Log.d(TAG, "Row not found!");
 	    	}
+	    	
 	    	cursor.close();
     	}catch(IndexOutOfBoundsException  e){
     		Log.e(TAG, "Id Already deleted");
@@ -174,7 +175,7 @@ public class SQLiteImplementation {
 	    	
             int idColumn = cursor.getColumnIndex(field); 
 
-	    	if(cursor!=null){
+	    	if(cursor.getCount() > 0){
 	    		if (cursor.moveToFirst()){
 		    		do{
 		    			list.add(cursor.getInt(idColumn));
@@ -247,7 +248,7 @@ public class SQLiteImplementation {
 	    	
             int idColumn = cursor.getColumnIndex("id"); 
 
-	    	if(cursor!=null){
+	    	if(cursor.getCount() > 0){
 	    		if (cursor.moveToFirst()){
 		    		do{
 		    			list.add(cursor.getInt(idColumn));
@@ -259,6 +260,7 @@ public class SQLiteImplementation {
 	    		Log.d(TAG, "Row not found!");
 	    	//	return "Not Found";
 	    	}
+	    	
 	    	cursor.close();
     	}catch(IndexOutOfBoundsException  e){
     		Log.e(TAG, "Id Already deleted");
