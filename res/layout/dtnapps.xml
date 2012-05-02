@@ -18,7 +18,7 @@
                 android:layout_height="40dip"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
-                android:contentDescription="@string/dtnSend" 
+                android:contentDescription="@string/dtnSend"
                 android:src="@drawable/dtnsend" />
 
             <TextView
@@ -47,8 +47,8 @@
                 android:layout_height="40dip"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/dtnreceive" 
-                android:contentDescription="@string/dtnReceive"/>
+                android:contentDescription="@string/dtnReceive"
+                android:src="@drawable/dtnreceive" />
 
             <TextView
                 android:id="@+id/DTNApps_DTNReciveTextView"
@@ -67,6 +67,37 @@
                 android:text="@string/open" >
             </Button>
         </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/DTNApps_FB_ImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dip"
+                android:layout_column="1"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/dtnReceive"
+                android:src="@drawable/facebook_logo2" />
+
+            <TextView
+                android:id="@+id/DTNApps_FB_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginLeft="15dp"
+                android:text="@string/facebook"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/DTNApps_FB_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:text="@string/open" 
+                android:onClick="openFacebookApp">
+            </Button>
+        </TableRow>
+        
     </TableLayout>
 
     <Button
