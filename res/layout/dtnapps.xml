@@ -15,9 +15,10 @@
             <ImageView
                 android:id="@+id/DTNApps_DTNSendImageView"
                 android:layout_width="wrap_content"
-                android:layout_height="40dip"
+                android:layout_height="60dip"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
                 android:contentDescription="@string/dtnSend" 
                 android:src="@drawable/dtnsend" />
 
@@ -26,15 +27,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/dtnSend"
-                android:textSize="20sp" />
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/DTNApps_DTNSendOpenButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
+                android:layout_marginTop="30dp"
                 android:text="@string/open" >
             </Button>
         </TableRow>
@@ -44,9 +47,10 @@
             <ImageView
                 android:id="@+id/DTNApps_DTNReciveImageView"
                 android:layout_width="wrap_content"
-                android:layout_height="40dip"
+                android:layout_height="60dip"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/dtnreceive" 
                 android:contentDescription="@string/dtnReceive"/>
 
@@ -55,15 +59,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/dtnReceive"
-                android:textSize="20sp" />
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/DTNApps_DTNReceiveOpenButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
-                android:layout_column="3"
+                android:layout_marginTop="30dp"
                 android:text="@string/open" >
             </Button>
         </TableRow>
@@ -71,10 +76,10 @@
 
     <Button
         android:id="@+id/DTNApps_CloseButton"
-        android:layout_width="wrap_content"
+        android:layout_width="130px"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="30dp"
         android:text="@string/close" />
 
 </LinearLayout>
