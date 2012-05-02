@@ -21,7 +21,7 @@
         android:text="@string/defaultDestID_Send" >
     </EditText>
 
-    <LinearLayout
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -29,17 +29,19 @@
 
         <Button
             android:id="@+id/DTNApps_DTNSend_SendButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130px"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
             android:text="@string/send" />
 
         <Button
             android:id="@+id/DTNApps_DTNSend_CloseButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130px"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/DTNApps_DTNSend_SendButton"
+            android:layout_marginLeft="220dp"
             android:text="@string/close" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/DTNApps_DTNSend_MessageCaptionTextView"

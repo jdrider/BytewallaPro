@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -14,18 +14,21 @@
 
         <Button
             android:id="@+id/DTNConfig_SaveButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130px"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
             android:text="@string/save" >
         </Button>
 
         <Button
             android:id="@+id/DTNConfig_CloseButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130px"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_below="@+id/DTNConfig_SaveButton"
             android:text="@string/close" >
         </Button>
-    </LinearLayout>
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/DTNConfig_EditText"
