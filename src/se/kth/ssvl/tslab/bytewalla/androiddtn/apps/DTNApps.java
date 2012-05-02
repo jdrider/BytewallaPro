@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * The portal Activity for DTNApplications.
@@ -100,8 +99,7 @@ public class DTNApps extends Activity  {
 		
 	
 	public void openFacebookApp(View v){
-		//Intent i = new Intent(DTNApps.this, DTNFacebook.class);
-		//startActivity(i);
-		Toast.makeText(getApplicationContext(), "Opening Facebook App", Toast.LENGTH_SHORT).show();
+		Intent i = new Intent(DTNApps.this, DTNFacebook.class);
+		startActivity(i);
 	}
 }

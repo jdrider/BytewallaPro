@@ -39,7 +39,10 @@
             android:name=".apps.DTNApps"
             android:label="DTNApps" >
         </activity>
-
+        <activity
+            android:name=".apps.DTNFacebook"
+            android:label="DTNFacebook" >
+        </activity>
         <service
             android:name=".DTNService"
             android:label="DTNService" >
