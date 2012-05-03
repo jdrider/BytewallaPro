@@ -11,6 +11,7 @@
                 android:id="@+id/PingEndpointIdEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:inputType="text"
                 android:text="@string/endpointLabel" >
             </EditText>
@@ -19,17 +20,20 @@
                 android:id="@+id/DTNPingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="1010dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/ping" >
             </Button>
         </TableRow>
 
         <TableRow>
-
-            <TextView
-                android:id="@+id/ResultTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/resultHere" >
-            </TextView>
         </TableRow>
+
+        <TextView
+            android:id="@+id/ResultTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/resultHere" />
+
     </TableLayout>
