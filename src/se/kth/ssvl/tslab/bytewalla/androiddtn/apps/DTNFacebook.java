@@ -1,5 +1,11 @@
 package se.kth.ssvl.tslab.bytewalla.androiddtn.apps;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
@@ -8,7 +14,12 @@ import com.facebook.android.FacebookError;
 import se.kth.ssvl.tslab.bytewalla.androiddtn.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class DTNFacebook extends Activity {
 
@@ -17,42 +28,76 @@ public class DTNFacebook extends Activity {
 	
 	private static Facebook facebook;
 	
+	private final static Object state = new Object();
+	
+	private final String[] permissions = {"publish_actions"};
+	
+	private SharedPreferences mPrefs;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.dtnapps_dtnreceive);
+		setContentView(R.layout.dtnapps_dtnfacebook);		
+	}
+	
+	@Override
+	public void onStart(){
+		super.onStart();
+
+		mPrefs = getPreferences(MODE_PRIVATE);
 		
 		facebook = new Facebook(fb_appID);
+
+		String accessToken = mPrefs.getString("access_token", null);
+
+		long expires = mPrefs.getLong("token_expires", 0);
 		
-		facebook.authorize(this, new DialogListener(){
+		if(accessToken != null){
+			facebook.setAccessToken(accessToken);
+		}
 
-			@Override
-			public void onComplete(Bundle values) {
-				// TODO Auto-generated method stub
-				
-			}
+		if(expires != 0){
+			facebook.setAccessExpires(expires);
+		}
 
-			@Override
-			public void onFacebookError(FacebookError e) {
-				// TODO Auto-generated method stub
-				
-			}
+		if(!facebook.isSessionValid()){
 
-			@Override
-			public void onError(DialogError e) {
-				// TODO Auto-generated method stub
-				
-			}
+			facebook.authorize(this, permissions, new DialogListener(){
 
-			@Override
-			public void onCancel() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+				@Override
+				public void onComplete(Bundle values) {
+
+					SharedPreferences.Editor editor = mPrefs.edit();
+					
+					editor.putString("access_token", facebook.getAccessToken());
+					editor.putLong("token_expires", facebook.getAccessExpires());
+					
+					editor.commit();
+
+				}
+
+				@Override
+				public void onFacebookError(FacebookError e) {
+					Log.i("DTN_FB", "facebook error occurred in auth");
+
+				}
+
+				@Override
+				public void onError(DialogError e) {
+					Log.i("DTN_FB", "dialog error occurred in auth");
+
+				}
+
+				@Override
+				public void onCancel() {
+					Log.i("DTN_FB", "auth cancelled");
+
+				}
+
+			});
+		}
 	}
 	
 	@Override
@@ -60,5 +105,63 @@ public class DTNFacebook extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		facebook.authorizeCallback(requestCode, resultCode, data);
+	}
+	
+	public void postToFacebook(View v){
+		
+		EditText msgBox = (EditText) findViewById(R.id.DTNApps_DTNFacebook_EditText);
+
+		final String msgToPost = msgBox.getText().toString();
+
+		if (msgToPost != null && msgToPost.length() > 0) {
+
+			Bundle params = new Bundle();
+
+			params.putString("message", msgToPost);
+			
+			AsyncFacebookRunner poster = new AsyncFacebookRunner(facebook);
+			
+			poster.request("me/feed", params, "POST", new RequestListener(){
+
+				@Override
+				public void onComplete(String response, Object state) {
+					Log.i("DTN_FB", response);
+					if(DTNFacebook.state.equals(state)){
+						Toast.makeText(getApplicationContext(), "Posted to feed", Toast.LENGTH_SHORT).show();
+					}
+					
+				}
+
+				@Override
+				public void onIOException(IOException e, Object state) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onFileNotFoundException(FileNotFoundException e,
+						Object state) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onMalformedURLException(MalformedURLException e,
+						Object state) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onFacebookError(FacebookError e, Object state) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			}, state);
+
+		}
+		
+		
 	}
 }
