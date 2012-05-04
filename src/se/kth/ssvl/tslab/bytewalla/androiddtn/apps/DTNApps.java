@@ -99,7 +99,7 @@ public class DTNApps extends Activity  {
 		
 	
 	public void openFacebookApp(View v){
-		Intent i = new Intent(DTNApps.this, DTNFacebook.class);
+		Intent i = new Intent(DTNApps.this, DTNFacebook_Post.class);
 		startActivity(i);
 	}
 }

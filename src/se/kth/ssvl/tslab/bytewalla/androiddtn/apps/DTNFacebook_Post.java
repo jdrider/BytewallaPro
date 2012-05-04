@@ -21,7 +21,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DTNFacebook extends Activity {
+public class DTNFacebook_Post extends Activity {
 
 	
 	private static final String fb_appID = "444494358901041";
@@ -125,11 +125,7 @@ public class DTNFacebook extends Activity {
 
 				@Override
 				public void onComplete(String response, Object state) {
-					Log.i("DTN_FB", response);
-					if(DTNFacebook.state.equals(state)){
-						Toast.makeText(getApplicationContext(), "Posted to feed", Toast.LENGTH_SHORT).show();
-					}
-					
+					Log.i("DTN_FB", response);					
 				}
 
 				@Override
