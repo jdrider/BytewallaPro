@@ -15,8 +15,8 @@ import com.facebook.android.FacebookError;
 import se.kth.ssvl.tslab.bytewalla.androiddtn.R;
 import se.kth.ssvl.tslab.bytewalla.androiddtn.servlib.storage.SQLiteImplementation;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -43,6 +43,8 @@ public class DTNFacebook_Post extends Activity {
 	private final String[] permissions = {"publish_actions"};
 
 	private SQLiteImplementation sqlDB;
+	
+	private static int currentUserID;
 
 
 	@Override
@@ -64,10 +66,14 @@ public class DTNFacebook_Post extends Activity {
 		Bundle extras = this.getIntent().getExtras();
 
 		String userName = extras.getString("userName");
+		
+		currentUserID = getIDByName(userName);
 
-		String accessToken = getAccessTokenForUser(userName);
+		String accessToken = getAccessTokenForUser(currentUserID);
 
-		long expires = getExpirationForUser(userName);
+		long expires = getExpirationForUser(currentUserID);
+		
+		
 
 		if(accessToken != null){
 			facebook.setAccessToken(accessToken);
@@ -80,7 +86,17 @@ public class DTNFacebook_Post extends Activity {
 
 				@Override
 				public void onComplete(Bundle values) {
-					// TODO Auto-generated method stub
+					ContentValues updateValues = new ContentValues();
+
+					updateValues.put("token", facebook.getAccessToken());
+
+					updateValues.put("expires", facebook.getAccessExpires() + "");
+
+					boolean success = sqlDB.update(userTable, updateValues, "id=" + currentUserID, null);
+
+					if(!success){
+						Log.w("FB", "User update did not occur");
+					}
 
 				}
 
@@ -105,7 +121,18 @@ public class DTNFacebook_Post extends Activity {
 
 				@Override
 				public void onComplete(Bundle values) {
-
+					
+					ContentValues updateValues = new ContentValues();
+					
+					updateValues.put("token", facebook.getAccessToken());
+					
+					updateValues.put("expires", facebook.getAccessExpires() + "");
+					
+					boolean success = sqlDB.update(userTable, updateValues, "id=" + currentUserID, null);
+					
+					if(!success){
+						Log.w("FB", "User update did not occur");
+					}
 
 				}
 
@@ -131,14 +158,25 @@ public class DTNFacebook_Post extends Activity {
 		}
 	}
 
-	private long getExpirationForUser(String userName) {
-		// TODO Auto-generated method stub
-		return 0;
+	private int getIDByName(String userName) {
+		int id = sqlDB.get_record(userTable, "name="+userName, "id", null, null);
+		
+		return id;
 	}
 
-	private String getAccessTokenForUser(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+	private long getExpirationForUser(int userID) {
+		String expireString = sqlDB.get_record_as_string(userTable, "id=" + userID, "expires", null, null);
+		
+		long expiresLong = Long.parseLong(expireString);
+		
+		return expiresLong;
+	}
+
+	private String getAccessTokenForUser(int userID) {
+		
+		String userAccessToken = sqlDB.get_record_as_string(userTable, "id="+userID, "token", null, null);
+		
+		return userAccessToken;
 	}
 
 	@Override
@@ -164,7 +202,14 @@ public class DTNFacebook_Post extends Activity {
 	}
 
 	private void saveMessage(String msgToPost) {
-		// TODO Auto-generated method stub
+		
+		ContentValues msgRow = new ContentValues();
+		
+		msgRow.put("message", msgToPost);
+		
+		msgRow.put("userID", currentUserID);
+		
+		sqlDB.add(msgTable, msgRow);	
 
 	}
 
@@ -220,5 +265,12 @@ public class DTNFacebook_Post extends Activity {
 			}, state);
 
 		}
+	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		
+		sqlDB.close();
 	}
 }

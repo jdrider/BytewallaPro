@@ -60,6 +60,8 @@ public class DTNFacebook_Users extends Activity{
 		
 		super.onStart();
 		
+		new DTNFacebook_AsyncPost(getApplicationContext()).execute(new Void[1]);
+		
 		sqlDB = new SQLiteImplementation(getApplicationContext(), Table_Create_Users);
 		
 		int numOfUsers = sqlDB.get_count(table, null, idField);
