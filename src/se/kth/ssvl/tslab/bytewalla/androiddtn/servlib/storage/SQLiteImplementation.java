@@ -159,7 +159,40 @@ public class SQLiteImplementation {
     		Log.e(TAG, "General Exception");
     	}
 		return -1;
-    }    	
+    }
+    
+    
+    public String get_record_as_string(String table, String condition, String field, String orderBy, String limit){
+    	
+    	
+    	String result = "";
+    	
+    	try{
+    		Cursor cursor =db.query(table, null, condition, null, null, null, orderBy, limit);
+    		
+    		int fieldColumn = cursor.getColumnIndex(field);
+    		
+    		if(cursor.getCount() > 0){
+    			if(cursor.moveToFirst()){
+    				result = cursor.getString(fieldColumn);
+    				cursor.close();
+    			}
+    		}
+    	}
+    	catch(IndexOutOfBoundsException  e){
+    		Log.e(TAG, "Id Already deleted");
+    	}
+    	catch(SQLiteException e){
+    		Log.e(TAG, "Coundn't run the query");
+    	}
+    	catch(Exception e){
+    		Log.e(TAG, "General Exception");
+    	}
+    	
+    	return result;
+    }
+    
+    
 	/**
 	 * Get multiple record from database based on condition.
 	 * @param table Name of table in which record already exist

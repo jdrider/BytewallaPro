@@ -9,57 +9,94 @@ import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
+import com.facebook.android.Facebook.ServiceListener;
 import com.facebook.android.FacebookError;
 
 import se.kth.ssvl.tslab.bytewalla.androiddtn.R;
+import se.kth.ssvl.tslab.bytewalla.androiddtn.servlib.storage.SQLiteImplementation;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class DTNFacebook_Post extends Activity {
 
+
+	private static final String Table_Create_Messages = "create table IF NOT EXISTS  fbMessages (id integer primary key autoincrement, " 
+			+ "message text, userID integer);";
+
+	private static final String msgTable = "fbMessages";
 	
+	private static final String userTable = "fbUsers";
+
 	private static final String fb_appID = "444494358901041";
-	
+
 	private static Facebook facebook;
-	
+
 	private final static Object state = new Object();
-	
+
 	private final String[] permissions = {"publish_actions"};
-	
-	private SharedPreferences mPrefs;
-	
+
+	private SQLiteImplementation sqlDB;
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState){
-		
+
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.dtnapps_dtnfacebook);		
 	}
-	
+
 	@Override
 	public void onStart(){
 		super.onStart();
-
-		mPrefs = getPreferences(MODE_PRIVATE);
 		
+		sqlDB = new SQLiteImplementation(getApplicationContext(), Table_Create_Messages);
+
 		facebook = new Facebook(fb_appID);
 
-		String accessToken = mPrefs.getString("access_token", null);
+		Bundle extras = this.getIntent().getExtras();
 
-		long expires = mPrefs.getLong("token_expires", 0);
-		
+		String userName = extras.getString("userName");
+
+		String accessToken = getAccessTokenForUser(userName);
+
+		long expires = getExpirationForUser(userName);
+
 		if(accessToken != null){
 			facebook.setAccessToken(accessToken);
-		}
 
-		if(expires != 0){
-			facebook.setAccessExpires(expires);
+			if(expires != 0){
+				facebook.setAccessExpires(expires);
+			}
+
+			facebook.extendAccessTokenIfNeeded(getApplicationContext(), new ServiceListener(){
+
+				@Override
+				public void onComplete(Bundle values) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void onFacebookError(FacebookError e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void onError(Error e) {
+					// TODO Auto-generated method stub
+
+				}
+
+			});
 		}
 
 		if(!facebook.isSessionValid()){
@@ -69,12 +106,6 @@ public class DTNFacebook_Post extends Activity {
 				@Override
 				public void onComplete(Bundle values) {
 
-					SharedPreferences.Editor editor = mPrefs.edit();
-					
-					editor.putString("access_token", facebook.getAccessToken());
-					editor.putLong("token_expires", facebook.getAccessExpires());
-					
-					editor.commit();
 
 				}
 
@@ -99,28 +130,61 @@ public class DTNFacebook_Post extends Activity {
 			});
 		}
 	}
-	
+
+	private long getExpirationForUser(String userName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private String getAccessTokenForUser(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		facebook.authorizeCallback(requestCode, resultCode, data);
 	}
-	
+
 	public void postToFacebook(View v){
-		
+
 		EditText msgBox = (EditText) findViewById(R.id.DTNApps_DTNFacebook_EditText);
 
 		final String msgToPost = msgBox.getText().toString();
 
+		if(hasWifi()){
+
+			postMessage(msgToPost);
+		}
+		else{
+			saveMessage(msgToPost);
+		}		
+	}
+
+	private void saveMessage(String msgToPost) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private boolean hasWifi() {
+		ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+
+		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+		
+		return mWifi.isConnected();
+	}
+
+	private void postMessage(String msgToPost) {
 		if (msgToPost != null && msgToPost.length() > 0) {
 
 			Bundle params = new Bundle();
 
 			params.putString("message", msgToPost);
-			
+
 			AsyncFacebookRunner poster = new AsyncFacebookRunner(facebook);
-			
+
 			poster.request("me/feed", params, "POST", new RequestListener(){
 
 				@Override
@@ -131,33 +195,30 @@ public class DTNFacebook_Post extends Activity {
 				@Override
 				public void onIOException(IOException e, Object state) {
 					// TODO Auto-generated method stub
-					
+
 				}
 
 				@Override
-				public void onFileNotFoundException(FileNotFoundException e,
-						Object state) {
+				public void onFileNotFoundException(FileNotFoundException e, Object state) {
 					// TODO Auto-generated method stub
-					
+
 				}
 
 				@Override
 				public void onMalformedURLException(MalformedURLException e,
 						Object state) {
 					// TODO Auto-generated method stub
-					
+
 				}
 
 				@Override
 				public void onFacebookError(FacebookError e, Object state) {
 					// TODO Auto-generated method stub
-					
+
 				}
-				
+
 			}, state);
 
 		}
-		
-		
 	}
 }

@@ -44,7 +44,7 @@
             android:label="DTNFacebook" >
         </activity>
         <activity
-            android:name=".apps.DTNFacebook_AddUser"
+            android:name=".apps.DTNFacebook_Users"
             android:label="Add FB User" >
         </activity>
         <service
