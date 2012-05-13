@@ -48,14 +48,14 @@
 
             <Button
                 android:id="@+id/DTNManager_StartStopButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
                 android:text="@string/start" >
             </Button>
 
             <Button
                 android:id="@+id/DTNManager_RestartButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:enabled="false"
@@ -64,7 +64,7 @@
 
             <Button
                 android:id="@+id/DTNManager_EditConfigButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:text="@string/config" >
@@ -72,7 +72,7 @@
 
             <Button
                 android:id="@+id/DTNManager_AppsButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:enabled="false"
@@ -81,7 +81,7 @@
 
             <Button
                 android:id="@+id/DTNManager_QuitButton"
-                android:layout_width="wrap_content"
+                android:layout_width="130px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:text="@string/quit" >
@@ -111,6 +111,13 @@
                 android:text="@string/batteryRaw" >
             </TextView>
         </LinearLayout>
+        
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/DTNManager_StatusHeaderTextView"
@@ -120,6 +127,23 @@
             android:layout_marginTop="10dip"
             android:text="@string/status" >
         </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_RoutesCaptionTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="300dip"
+            android:text="@string/routeSection" >
+        </TextView>
+        </LinearLayout>
+        
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/DTNManager_StorageConsumptionTextView"
@@ -129,7 +153,24 @@
             android:layout_marginLeft="15dip"
             android:text="@string/storageConsumption" >
         </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_RouteLocalEIDTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="175dip"
+            android:text="@string/routeLocalEID" >
+        </TextView>
+        </LinearLayout>
 
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        
         <TextView
             android:id="@+id/DTNManager_NoBundlesRegistrationsTextView"
             android:layout_width="fill_parent"
@@ -138,6 +179,23 @@
             android:layout_marginLeft="15dip"
             android:text="@string/noBundlesReg" >
         </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_RouterTypeTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="127dip"
+            android:text="@string/routerType" >
+        </TextView>
+        </LinearLayout>
+        
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/DTNManager_NoBundlesUploadingDownloadingTextView"
@@ -147,7 +205,17 @@
             android:layout_marginLeft="15dip"
             android:text="@string/noBundlesUpDown" >
         </TextView>
-
+        
+        <TextView
+            android:id="@+id/DTNManager_RoutesListTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="83dip"
+            android:text="@string/destLink" >
+        </TextView>    
+        </LinearLayout>
+        
         <TextView
             android:id="@+id/DTNManager_NoActiveInterfacesLinksTextView"
             android:layout_width="fill_parent"
@@ -156,7 +224,14 @@
             android:text="@string/noActiveInterfaceLinks"
             android:visibility="gone" >
         </TextView>
-
+        
+		<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        
         <TextView
             android:id="@+id/DTNManager_DTNConfigurationTextView"
             android:layout_width="fill_parent"
@@ -164,8 +239,25 @@
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip"
             android:text="@string/dtnConfig" >
-        </TextView>
+         </TextView>
+        
+         <TextView
+            android:id="@+id/DTNManager_DiscoverySectionCaptionTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="225dip"
+            android:text="@string/discSectionCaption" >
+         </TextView>
+         </LinearLayout>
 
+		<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+		
         <TextView
             android:id="@+id/DTNManager_StorageTypeQuotaTextView"
             android:layout_width="fill_parent"
@@ -174,6 +266,23 @@
             android:layout_marginLeft="15dip"
             android:text="@string/storageType" >
         </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_DiscoveriesCaptionTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="110dip"
+            android:text="@string/discoveries" >
+        </TextView>
+        </LinearLayout>
+        
+		<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/DTNManager_StoragePathTextView"
@@ -181,15 +290,51 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="@string/storagePath" />
-
+            android:text="@string/storagePath" >
+        </TextView>
+        
+         <TextView
+            android:id="@+id/DTNManager_DiscoveriesListTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="255dip"
+            android:text="@string/discoveryAddr" >
+         </TextView>
+         </LinearLayout>
+        
+		<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+		
         <TextView
             android:id="@+id/DTNManager_InterfacesCaptionTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="15dip"
-            android:text="@string/interfaceSection" />
+            android:text="@string/interfaceSection" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_AnnouncesCaptionTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="245dip"
+            android:text="@string/discoveries" >
+        </TextView>
+        </LinearLayout>
+        
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/DTNManager_DebugLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/DTNManager_InterfacesListTextView"
@@ -197,7 +342,18 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="25dip"
-            android:text="@string/interfaceList" />
+            android:text="@string/interfaceList" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/DTNManager_AnnouncesListTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="148dip"
+            android:text="@string/announcesList" >
+        </TextView>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/DTNManager_LinksCaptionTextView"
@@ -215,7 +371,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/linksList" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_RoutesCaptionTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -223,7 +379,7 @@
             android:layout_marginLeft="15dip"
             android:text="@string/routeSection" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_RouteLocalEIDTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -231,7 +387,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/routeLocalEID" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_RouterTypeTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -239,7 +395,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/routerType" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_RoutesListTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -247,7 +403,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/destLink" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_DiscoverySectionCaptionTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -255,7 +411,7 @@
             android:layout_marginLeft="15dip"
             android:text="@string/discSectionCaption" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_DiscoveriesCaptionTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -263,7 +419,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/discoveries" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_DiscoveriesListTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -271,7 +427,7 @@
             android:layout_marginLeft="35dip"
             android:text="@string/discoveryAddr" />
 
-        <TextView
+        
             android:id="@+id/DTNManager_AnnouncesCaptionTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -279,7 +435,7 @@
             android:layout_marginLeft="25dip"
             android:text="@string/discoveries" />
 
-        <TextView
+
             android:id="@+id/DTNManager_AnnouncesListTextView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
