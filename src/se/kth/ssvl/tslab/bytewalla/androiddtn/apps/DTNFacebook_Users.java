@@ -16,7 +16,9 @@ import com.facebook.android.FacebookError;
 import se.kth.ssvl.tslab.bytewalla.androiddtn.R;
 import se.kth.ssvl.tslab.bytewalla.androiddtn.servlib.storage.SQLiteImplementation;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -109,12 +111,40 @@ public class DTNFacebook_Users extends Activity{
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,int arg2, long arg3) {
-				Toast.makeText(getApplicationContext(), "Remove User", Toast.LENGTH_SHORT).show();
-				return false;
+				
+				final String userName = userNames.get(arg2);
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(DTNFacebook_Users.this);
+				
+				builder.setTitle("Options");
+				
+				builder.setItems(new CharSequence[]{"Remove"}, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if(removeUser(userName)){
+							Toast.makeText(DTNFacebook_Users.this, userName + "  Removed", Toast.LENGTH_SHORT).show();
+						}
+						else{
+							Toast.makeText(DTNFacebook_Users.this, "Unable to remove user", Toast.LENGTH_SHORT).show();
+						}
+						
+						dialog.dismiss();
+					}
+				});
+								
+				return true;
 			}
 		});	
 	}
 	
+	protected boolean removeUser(String userName) {
+		
+		return sqlDB.delete_record(table, "name=" + "\"" + userName + "\"");
+		
+	}
+
+
 	public void addFBUser(View v){
 		
 		addNewUser();

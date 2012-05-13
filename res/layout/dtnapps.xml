@@ -34,7 +34,7 @@
 
             <Button
                 android:id="@+id/DTNApps_DTNSendOpenButton"
-                android:layout_width="130px"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
                 android:layout_marginTop="30dp"
@@ -66,7 +66,7 @@
 
             <Button
                 android:id="@+id/DTNApps_DTNReceiveOpenButton"
-                android:layout_width="130px"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/open" >
@@ -89,13 +89,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="150dp"
                 android:text="@string/facebook"
-                android:textSize="20sp" />
+                android:textSize="40sp"/>
 
             <Button
                 android:id="@+id/DTNApps_FB_Button"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
                 android:text="@string/open" 

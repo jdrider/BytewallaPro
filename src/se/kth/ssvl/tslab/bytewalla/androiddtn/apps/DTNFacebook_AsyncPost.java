@@ -18,8 +18,8 @@ import android.util.Log;
 public class DTNFacebook_AsyncPost extends AsyncTask<Void, Void, Boolean> {
 
 	
-	private static final String Table_Create_Messages = "create table IF NOT EXISTS  fbMsgs (id integer primary key autoincrement, " 
-            + "msg text, userID integer);";
+	private static final String Table_Create_Messages = "create table IF NOT EXISTS  fbMessages (id integer primary key autoincrement, " 
+            + "message text, userID integer);";
 	
 	private static final String fb_appID = "444494358901041";
 	
@@ -45,49 +45,54 @@ public class DTNFacebook_AsyncPost extends AsyncTask<Void, Void, Boolean> {
 			
 			sqlDB = new SQLiteImplementation(context, Table_Create_Messages);
 			
-			int msgsToPost = sqlDB.get_count("fbMsgs", null, new String[]{"id"});
+			int msgsToPost = sqlDB.get_count("fbMessages", null, new String[]{"id"});
 			
 			if(msgsToPost > 0){
 				
-				List<Integer> msgIDs = sqlDB.get_records("fbMsgs", null, "id");
+				List<Integer> msgIDs = sqlDB.get_records("fbMessages", null, "id");
 				
 				for(Integer msgID : msgIDs){
 
-					String message = sqlDB.get_record_as_string("fbMsgs", "id=" + msgID, "msg", null, null);
+					String message = sqlDB.get_record_as_string("fbMessages", "id=" + msgID, "message", null, null);
 
-					int userID = sqlDB.get_record("fbMsgs", "id=" + msgID, "userID", null, null);
+					if(message.length() > 0){
 
-					Facebook fb = createFacebookObjectForUser(userID);
+						int userID = sqlDB.get_record("fbMessages", "id=" + msgID, "userID", null, null);
 
-					if(fb.isSessionValid()){
+						Facebook fb = createFacebookObjectForUser(userID);
 
-						Bundle msgParams = new Bundle();
+						if(fb.isSessionValid()){
 
-						msgParams.putString("message", message);
+							Bundle msgParams = new Bundle();
 
-						try {
-							fb.request("me/feed", msgParams, "POST");
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (MalformedURLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							msgParams.putString("message", message);
+
+							try {
+								fb.request("me/feed", msgParams, "POST");
+							} catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (MalformedURLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
 						}
 
+						else{
+							Log.w("FB", "Session expired for user: " + userID);
+						}
 					}
 					
-					else{
-						Log.w("FB", "Session expired for user: " + userID);
-					}
+					Log.i("FB", "All saved messages posted.");
 				}
 				
 			}
 			
-			sqlDB.drop_table("fbMsgs");
+			sqlDB.drop_table("fbMessages");
 			
 			sqlDB.close();
 		}

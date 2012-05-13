@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class DTNFacebook_Post extends Activity {
 
@@ -159,7 +160,7 @@ public class DTNFacebook_Post extends Activity {
 	}
 
 	private int getIDByName(String userName) {
-		int id = sqlDB.get_record(userTable, "name="+userName, "id", null, null);
+		int id = sqlDB.get_record(userTable, "name="+"\"" + userName + "\"", "id", null, null);
 		
 		return id;
 	}
@@ -198,18 +199,24 @@ public class DTNFacebook_Post extends Activity {
 		}
 		else{
 			saveMessage(msgToPost);
-		}		
+			
+			Toast.makeText(getApplicationContext(), "Message saved", Toast.LENGTH_SHORT).show();
+		}
+		
+		finish();
 	}
 
 	private void saveMessage(String msgToPost) {
 		
 		ContentValues msgRow = new ContentValues();
 		
-		msgRow.put("message", msgToPost);
+		msgRow.put("message", "\"" + msgToPost + "\"");
 		
 		msgRow.put("userID", currentUserID);
 		
-		sqlDB.add(msgTable, msgRow);	
+		if(sqlDB.add(msgTable, msgRow) < 0){
+			Log.w("FB", "Message was not saved to DB");
+		}
 
 	}
 
