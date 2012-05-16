@@ -37,11 +37,12 @@
                 android:id="@+id/DTNApps_DTNReceive_ReceiveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="@string/receive" />
 
             <Button
                 android:id="@+id/DTNApps_DTNReceive_CloseButton"
-                android:layout_width="wrap_content"
+                android:layout_width="84px"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
                 android:layout_marginLeft="10dp"
