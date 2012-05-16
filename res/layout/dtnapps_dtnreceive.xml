@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
@@ -23,29 +24,30 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:inputType="text"
-            android:text="@string/defaultDestID_Rec" >
+            android:text="dtn://village.bytewalla.com/test" >
         </EditText>
-
+
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
+            android:layout_width="1272dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/DTNApps_DTNReceive_ReceiveButton"
-                android:layout_width="130px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="1130dp"
+                android:layout_marginLeft="10dp"
                 android:text="@string/receive" />
 
             <Button
                 android:id="@+id/DTNApps_DTNReceive_CloseButton"
-                android:layout_width="130px"
+                android:layout_width="84px"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/DTNApps_DTNReceive_ReceiveButton"
-                android:layout_marginLeft="1130dp"
+                android:layout_marginLeft="10dp"
                 android:text="@string/close" />
+
         </RelativeLayout>
 
         <TextView
@@ -61,6 +63,13 @@
             android:layout_height="wrap_content"
             android:text="@string/na" >
         </TextView>
+
+        <ImageView
+            android:id="@+id/DTNApps_DTNReciveImageView"
+            android:layout_width="match_parent"
+            android:layout_height="528dp"
+            android:src="@android:drawable/alert_dark_frame" />
+
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

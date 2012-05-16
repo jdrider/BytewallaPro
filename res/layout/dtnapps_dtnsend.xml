@@ -21,27 +21,26 @@
         android:text="@string/defaultDestID_Send" >
     </EditText>
 
-    <RelativeLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/DTNApps_DTNSend_SendButton"
-            android:layout_width="130px"
+            android:layout_width="84px"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1130dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/send" />
 
         <Button
             android:id="@+id/DTNApps_DTNSend_CloseButton"
-            android:layout_width="130px"
+            android:layout_width="84px"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/DTNApps_DTNSend_SendButton"
-            android:layout_marginLeft="1130dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/close" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/DTNApps_DTNSend_MessageCaptionTextView"
@@ -55,9 +54,35 @@
     <EditText
         android:id="@+id/DTNApps_DTNSend_MessageTextView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:lines="6"
-        android:inputType="textLongMessage">
+        android:layout_height="58dp"
+        android:inputType="textLongMessage"
+        android:lines="6" >
     </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/DTNApps_DTNSend_TakePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take Picture" />
+
+        <Button
+            android:id="@+id/DTNApps_DTNSend_SelectFromGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select From Gallery" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/DTNApps_DTNSend_PictureBox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.93"
+        android:src="@android:drawable/alert_dark_frame" />
 
 </LinearLayout>

@@ -77,7 +77,8 @@
    <string name="storagePath">Storage Path : dtn</string>
    <string name="storageType">Storage Type / Quota : SDCard / 50 MB</string>
    <string name="about">Tool for monitoring and configuring DTN Service</string>
-   <string name="facebook">Facebook</string>
+   <string name="Take_Picture">Take Picture</string>
    <string name="msgToPost">Enter the message to post</string>
+   <string name="facebook">Facebook</string>
    
 </resources>
