@@ -19,8 +19,12 @@
  */
 package se.kth.ssvl.tslab.bytewalla.androiddtn.apps;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
@@ -43,13 +47,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 /**
  * The DTNReceive Activity. This Activity allows user to receive Text message from DTN
@@ -91,6 +99,9 @@ public class DTNReceive extends Activity {
 	 */
 	private ServiceConnection conn_;
 
+	
+	private ImageView pictureBox;
+	
 	/**
 	 * The onCreate function overridden from Android Activity. 
 	 * This basically will associate the display view to dtnreceive layout and initialize the class
@@ -124,6 +135,13 @@ public class DTNReceive extends Activity {
 	 */
 	private void unbindDTNService() {
 		unbindService(conn_);
+	}
+	
+	
+	private void setPictureBox(Bitmap bm)
+	{
+		pictureBox = (ImageView) this.findViewById(R.id.DTNApps_DTNReciveImageView);
+		pictureBox.setImageBitmap(bm);
 	}
 
 	/**
@@ -178,6 +196,7 @@ public class DTNReceive extends Activity {
 
 		resultTextView = (TextView) this
 				.findViewById(R.id.DTNApps_DTNReceive_ResultTextView);
+		
 
 	}
 
@@ -232,9 +251,23 @@ public class DTNReceive extends Activity {
 			try {
 				file_handle = new RandomAccessFile(payload.file(), "r");
 				file_handle.read(result);
-				String output = new String(result, "US-ASCII");
-
-				buf.append(String.format("Message: %s\n", output));
+					
+				if(payload.length()<255)
+				{
+					String output = new String(result, "US-ASCII");
+					buf.append(String.format("Message: %s\n", output));
+				} else
+				{
+				
+					try{
+						Bitmap bm = BitmapFactory.decodeByteArray(result, 0, result.length);
+						setPictureBox(bm);
+						
+					} catch(Exception e){
+						buf.append(String.format("Message: %s\n", e.getMessage()));
+					}
+				}
+				
 			} catch (UnsupportedEncodingException e) {
 				Log.e(TAG, e.getMessage());
 			} catch (FileNotFoundException e) {

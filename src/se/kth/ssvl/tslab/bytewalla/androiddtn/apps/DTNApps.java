@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * The portal Activity for DTNApplications.
@@ -46,6 +47,8 @@ public class DTNApps extends Activity  {
 	 * CloseButton reference object
 	 */
 	private Button CloseButton;
+	
+
 
 	/**
 	 * Oncreate overriding of Android Activity. Basically, this call DTNApps layout from Android Layout and then init() function of this class
@@ -66,6 +69,9 @@ public class DTNApps extends Activity  {
 			DTNSendOpenButton    = (Button) this.findViewById(R.id.DTNApps_DTNSendOpenButton);
 			DTNReceiveOpenButton = (Button) this.findViewById(R.id.DTNApps_DTNReceiveOpenButton);
 			CloseButton       = (Button) this.findViewById(R.id.DTNApps_CloseButton);
+			
+			
+			
 			
 			CloseButton.setOnClickListener(new OnClickListener() {
 				
