@@ -501,29 +501,31 @@ public class DTNSend extends Activity  {
 	}
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_PIC_REQUEST) {
-        	
-              Bitmap image = (Bitmap) data.getExtras().get("data");    
-              PictureBox.setImageBitmap(image);
-              sendBitmap = image;
-        }
-        
-        if (requestCode == SELECT_PICTURE) {
-        	Uri targetUri = data.getData();
-        	String[] filePathColumn = {MediaStore.Images.Media.DATA};
+		if(data != null){
+			if (requestCode == CAMERA_PIC_REQUEST) {
 
-            Cursor cursor = getContentResolver().query(targetUri, filePathColumn, null, null, null);
-            cursor.moveToFirst();
+				Bitmap image = (Bitmap) data.getExtras().get("data");    
+				PictureBox.setImageBitmap(image);
+				sendBitmap = image;
+			}
 
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String filePath = cursor.getString(columnIndex);
-            cursor.close();
+			if (requestCode == SELECT_PICTURE) {
+				Uri targetUri = data.getData();
+				String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+				Cursor cursor = getContentResolver().query(targetUri, filePathColumn, null, null, null);
+				cursor.moveToFirst();
+
+				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+				String filePath = cursor.getString(columnIndex);
+				cursor.close();
 
 
-            Bitmap image = BitmapFactory.decodeFile(filePath);
-            sendBitmap = image;
-            PictureBox.setImageBitmap(image);
-        }
+				Bitmap image = BitmapFactory.decodeFile(filePath);
+				sendBitmap = image;
+				PictureBox.setImageBitmap(image);
+			}
+		}
 	}
 		
 }
